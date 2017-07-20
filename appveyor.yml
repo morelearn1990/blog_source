@@ -2,7 +2,7 @@ clone_depth: 5
 
 environment:
   access_token:
-    secure: TF+cEX3UUey+Sr8GDGZviO2HICJN3WdECvCpVZtEPbBY9UWpBX7bd4ibyd9C0eLG
+    secure: 
 
 install:
   - node --version
@@ -18,7 +18,7 @@ artifacts:
 
 on_success:
   - git config --global credential.helper store
-  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+  # - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
   - git config --global user.email "%GIT_USER_EMAIL%"
   - git config --global user.name "%GIT_USER_NAME%"
   - git clone --depth 5 -q --branch=%TARGET_BRANCH% %STATIC_SITE_REPO% %TEMP%\static-site
