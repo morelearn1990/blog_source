@@ -7,7 +7,7 @@ title: Morelearn's blog
 subtitle: Come from earth, and go to earth.
 description: 人生如过河之卒，唯前行尔
 author: Morelearn
-language: zh
+language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
@@ -72,9 +72,14 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: material
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+# search
+search:
+  path: search.xml
+  field: all
