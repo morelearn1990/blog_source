@@ -21,8 +21,6 @@ artifacts:
 on_success:
   # - git config --global credential.helper store
   # - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
-  # - git config --global user.email "%GIT_USER_EMAIL%"
-  # - git config --global user.name "%GIT_USER_NAME%"
   # - git clone --depth 5 -q --branch=%TARGET_BRANCH% %STATIC_SITE_REPO% %TEMP%\static-site
   # - cd %TEMP%\static-site
   # - del * /f /q
@@ -32,9 +30,11 @@ on_success:
   # - if "%APPVEYOR_REPO_BRANCH%"=="master" if not defined APPVEYOR_PULL_REQUEST_NUMBER (git diff --quiet --exit-code --cached || git commit -m "Update Static Site" && git push origin %TARGET_BRANCH% && appveyor AddMessage "Static Site Updated")
   - cd public
   - git init
+  - git config --global user.email "%GIT_USER_EMAIL%"
+  - git config --global user.name "%GIT_USER_NAME%"
   - git add *
-  - git init
   - git commit -m "Update Blog"
   - git remote add origin https://git.coding.net/morelearn/blog.git
   - git push -u origin master
+
 
