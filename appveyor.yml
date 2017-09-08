@@ -19,7 +19,7 @@ artifacts:
   - path: public
 
 on_success:
-  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "%STATIC_SITE_USER%`n"
+  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://morelearn:fh901002@git.coding.net`n"
   - git config --global credential.helper store  
   - git config --global user.email "%GIT_USER_EMAIL%"
   - git config --global user.name "%GIT_USER_NAME%"
