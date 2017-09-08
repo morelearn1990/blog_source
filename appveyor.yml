@@ -21,12 +21,12 @@ artifacts:
 on_success:
   # - git config --global credential.helper store
   # - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://$($env:access_token):x-oauth-basic@github.com`n"
+  - git clone --depth 5 -q --branch=%TARGET_BRANCH% %STATIC_SITE_REPO% %TEMP%\static-site
+  - cd %TEMP%\static-site
   - git config --global user.email "%GIT_USER_EMAIL%"
   - git config --global user.name "%GIT_USER_NAME%"
   - git config --global user.Username "%GIT_USER_NAME%"
   - git config --global user.Password "%GIT_USER_PASSWORD%"
-  - git clone --depth 5 -q --branch=%TARGET_BRANCH% %STATIC_SITE_REPO% %TEMP%\static-site
-  - cd %TEMP%\static-site
   - del * /f /q
   - for /d %%p IN (*) do rmdir "%%p" /s /q
   - SETLOCAL EnableDelayedExpansion & robocopy "%APPVEYOR_BUILD_FOLDER%\public" "%TEMP%\static-site" /e & IF !ERRORLEVEL! EQU 1 (exit 0) ELSE (IF !ERRORLEVEL! EQU 3 (exit 0) ELSE (exit 1))
