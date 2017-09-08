@@ -1,8 +1,4 @@
----
-title: 常用 meta 整理
-categories: HTML
 
----
 
 常用 meta 整理
 
@@ -156,5 +152,3 @@ url="url" 后者代表当前PC页所对应的手机页URL，两者必须是一�
 <meta name="description" content="above 150 words" />
 <meta name="author" content="author name" />
 ```
-
-
