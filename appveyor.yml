@@ -26,7 +26,8 @@ on_success:
   - git config --global --list
   - git config credential.https://git.coding.net.username morelearn
   - git config credential.https://git.coding.net.password fh901002
-  - git config credential.helper cache
+  # - git config credential.helper cache
+  - git --version
   - git config --local user.email "%GIT_USER_EMAIL%"
   - git config --local user.name "%GIT_USER_NAME%"
   - git config --local user.password "%GIT_USER_PASSWORD%"
@@ -38,4 +39,4 @@ on_success:
   - git add -A
   - git commit -m "Update Static Site" 
   - git push origin %TARGET_BRANCH%
-  - appveyor AddMessage "Static Site Updated"
+  # - appveyor AddMessage "Static Site Updated"
