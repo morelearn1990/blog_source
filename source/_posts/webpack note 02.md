@@ -1,5 +1,7 @@
 ---
 title: webpack 学习笔记二
+categories: Tool
+
 ---
 
 ## loader 概念引入
