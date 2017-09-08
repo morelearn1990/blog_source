@@ -27,8 +27,10 @@ on_success:
   - git config credential.https://git.coding.net.username morelearn
   - git config credential.https://git.coding.net.password fh901002
   - git config credential.helper cache
-  - git config --global user.email "%GIT_USER_EMAIL%"
-  - git config --global user.name "%GIT_USER_NAME%"
+  # - git config --global user.email "%GIT_USER_EMAIL%"
+  # - git config --global user.name "%GIT_USER_NAME%"  
+  - git config --global https://git.coding.net.username "%GIT_USER_EMAIL%"
+  - git config --global https://git.coding.net.password "%GIT_USER_NAME%"
   - git config --local --list
   - git config --global --list
   - del * /f /q
