@@ -19,14 +19,22 @@ artifacts:
   - path: public
 
 on_success:
-  - git config --global credential.helper store
-  - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://morelearn:fh901002@git.coding.net"
-  - git config --global user.email "%GIT_USER_EMAIL%"
-  - git config --global user.name "%GIT_USER_NAME%"
+  # - ps: Add-Content "$env:USERPROFILE\.git-credentials" "https://morelearn:fh901002@git.coding.net"
   - git clone --depth 5 -q --branch=%TARGET_BRANCH% %STATIC_SITE_REPO% %TEMP%\static-site
   - cd %TEMP%\static-site
+  - git config --local --list
+  - git config --global --list
+  - git config credential.https://git.coding.net.username morelearn
+  - git config credential.https://git.coding.net.password fh901002
+  - git config credential.helper cache
+  - git config --global user.email "%GIT_USER_EMAIL%"
+  - git config --global user.name "%GIT_USER_NAME%"
+  - git config --local --list
+  - git config --global --list
   - del * /f /q
   - for /d %%p IN (*) do rmdir "%%p" /s /q
   - SETLOCAL EnableDelayedExpansion & robocopy "%APPVEYOR_BUILD_FOLDER%\public" "%TEMP%\static-site" /e & IF !ERRORLEVEL! EQU 1 (exit 0) ELSE (IF !ERRORLEVEL! EQU 3 (exit 0) ELSE (exit 1))
   - git add -A
-  - if "%APPVEYOR_REPO_BRANCH%"=="master" if not defined APPVEYOR_PULL_REQUEST_NUMBER (git diff --quiet --exit-code --cached || git commit -m "Update Static Site" && git push origin %TARGET_BRANCH% && appveyor AddMessage "Static Site Updated")
+  - git commit -m "Update Static Site" 
+  # - git push origin %TARGET_BRANCH%
+  # - appveyor AddMessage "Static Site Updated"
