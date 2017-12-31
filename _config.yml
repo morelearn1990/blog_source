@@ -77,7 +77,13 @@ theme: material
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  - type: git
+    repo: https://git.coding.net/morelearn/blog.git
+    branch: master
+  - type: git
+    repo: https://github.com/morelearn1990/morelearn1990.github.io.git
+    branch: master
+
 
 # search
 search:
