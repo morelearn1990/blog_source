@@ -1,6 +1,6 @@
 ---
 title: HTTP 原理
-data: 2017-12-31
+date: 2017-12-31
 categories: HTTP
 
 ---
